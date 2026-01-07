@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  background: radial-gradient(circle, #1b1d21 0%, #fc466b 100%);
+}
+
+.memory-game {
+  width: 90vw;
+  max-width: 720px;
+  aspect-ratio: 1 / 1;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  perspective: 1000px;
+}
+
+.memory-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  object-fit: cover;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.back-face {
+  background: #000;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+  .memory-game {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
